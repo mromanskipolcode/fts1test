@@ -1,0 +1,33 @@
+<h1>Listing texts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Subtitle</th>
+      <th>Short description</th>
+      <th>Full description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @texts.each do |text| %>
+      <tr>
+        <td><%= text.title %></td>
+        <td><%= text.subtitle %></td>
+        <td><%= text.short_description %></td>
+        <td><%= text.full_description %></td>
+        <td><%= link_to 'Show', text %></td>
+        <td><%= link_to 'Edit', edit_text_path(text) %></td>
+        <td><%= link_to 'Destroy', text, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Text', new_text_path %>
