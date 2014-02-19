@@ -13,9 +13,14 @@ class Text < ActiveRecord::Base
   end
   
   def self.searchByLike(string)
-   require 'benchmark'
-   require 'bigdecimal/math'
-   puts Benchmark.measure{ puts BigMath.PI(10_000) }
-   true
+    require 'benchmark'
+    require 'bigdecimal/math'
+    
+    puts 'Like question:'
+    puts Text.where("short_description LIKE '%"+string.to_s+"%'").count, "like"
+    puts 'iLike question:'
+    puts Text.where("short_description ILIKE '%"+string.to_s+"%'").count, "ilike"
   end
+  
+  
 end
